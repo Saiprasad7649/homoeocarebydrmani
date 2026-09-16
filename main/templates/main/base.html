@@ -9,41 +9,115 @@
     <!-- Link our external professional stylesheet -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <style>
-        /* Mobile Navbar Responsive Tweaks */
+        /* Navbar Layout Defaults (Desktop) */
+        .navbar-container {
+            background: #003333;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        /* Hamburger Toggle Button (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Responsive Mobile Styles */
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column !important;
-                padding: 10px 15px !important;
-                gap: 6px !important;
+            .navbar-container {
+                justify-content: space-between;
+                padding: 15px 20px;
             }
-            nav a {
-                display: block !important;
-                width: 90% !important;
-                margin: 2px auto !important;
-                text-align: center !important;
+
+            .menu-toggle {
+                display: flex; /* Show hamburger on mobile */
+            }
+
+            .nav-links {
+                display: none; /* Hide menu links by default on mobile */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #003333;
+                padding: 15px 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                gap: 5px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show when toggled */
+            }
+
+            .nav-links a {
+                padding: 10px;
+                width: 85%;
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
-    <!-- Navigation Bar -->
-    <nav style="background: #003333; padding: 12px 20px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        
-        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Home</a>
-        
-        <a href="{% url 'consultation' %}" class="{% if request.resolver_match.url_name == 'consultation' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Online Consultation</a>
-        
-        <a href="{% url 'provider' %}" class="{% if request.resolver_match.url_name == 'provider' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Provider Information</a>
-        
-        <a href="{% url 'diseases' %}" class="{% if request.resolver_match.url_name == 'diseases' or request.resolver_match.url_name == 'disease_detail' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Conditions</a>
-        
-        <a href="{% url 'testimonials' %}" class="{% if request.resolver_match.url_name == 'testimonials' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Testimonials</a>
-        
-        <a href="{% url 'blogs' %}" class="{% if request.resolver_match.url_name == 'blogs' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Blogs</a>
-        
-        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Contact Us</a>
-        
+    <!-- Navigation Bar with Hamburger Toggle -->
+    <nav class="navbar-container">
+        <!-- Optional Mobile Brand Title / You can remove or keep this -->
+        <span style="color: white; font-weight: bold; font-size: 16px; display: none;" class="mobile-brand">Homoeocare</span>
+
+        <!-- Hamburger Button -->
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="nav-links" id="nav-links">
+            <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active-tab{% endif %}">Home</a>
+            <a href="{% url 'consultation' %}" class="{% if request.resolver_match.url_name == 'consultation' %}active-tab{% endif %}">Online Consultation</a>
+            <a href="{% url 'provider' %}" class="{% if request.resolver_match.url_name == 'provider' %}active-tab{% endif %}">Provider Information</a>
+            <a href="{% url 'diseases' %}" class="{% if request.resolver_match.url_name == 'diseases' or request.resolver_match.url_name == 'disease_detail' %}active-tab{% endif %}">Conditions</a>
+            <a href="{% url 'testimonials' %}" class="{% if request.resolver_match.url_name == 'testimonials' %}active-tab{% endif %}">Testimonials</a>
+            <a href="{% url 'blogs' %}" class="{% if request.resolver_match.url_name == 'blogs' %}active-tab{% endif %}">Blogs</a>
+            <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active-tab{% endif %}">Contact Us</a>
+        </div>
     </nav>
 
     <!-- Page Content Area -->
@@ -104,6 +178,16 @@
             Committed to natural constitutional healing and patient wellness.
         </div>
     </footer>
+
+    <!-- JavaScript to Handle Hamburger Menu Toggle -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu');
+        const navLinksContainer = document.getElementById('nav-links');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
