@@ -1,0 +1,98 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container" style="max-width: 800px;">
+        <div class="card">
+            <h1 class="text-center" style="margin-top: 0; color: #006666;">Online Consultation Intake</h1>
+            <p class="text-center text-muted" style="margin-bottom: 30px;">
+                Please provide your case history below. Dr. Mani will review your responses thoroughly to prepare for your personalized classical homeopathy consultation.
+            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- ① About You -->
+                <div style="margin-bottom: 30px; background: #fdfdfd; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
+                    <h3 style="color: #006666; margin-top: 0; border-bottom: 2px solid #e0f2f1; padding-bottom: 8px;">1. About You</h3>
+                    
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Full Name:</label>
+                    <input type="text" name="full_name" class="form-control" placeholder="Your Full Name" required>
+
+                    <div style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Age:</label>
+                            <input type="number" name="age" class="form-control" placeholder="Years">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-weight: bold; display: block; margin-bottom: 5px;">Gender:</label>
+                            <input type="text" name="gender" class="form-control" placeholder="Gender">
+                        </div>
+                    </div>
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Email Address:</label>
+                    <input type="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Phone Number:</label>
+                    <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+                </div>
+
+                <!-- ② Main Concern -->
+                <div style="margin-bottom: 30px; background: #fdfdfd; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
+                    <h3 style="color: #006666; margin-top: 0; border-bottom: 2px solid #e0f2f1; padding-bottom: 8px;">2. Main Concern</h3>
+                    
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">What is your primary health complaint?</label>
+                    <textarea name="main_complaint" class="form-control" rows="3" placeholder="Describe your main symptoms..." required></textarea>
+
+                    <div style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Duration:</label>
+                            <input type="text" name="duration" class="form-control" placeholder="e.g., 6 months, 3 years">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Severity:</label>
+                            <input type="text" name="severity" class="form-control" placeholder="Mild, Moderate, Severe">
+                        </div>
+                    </div>
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Modalities (What makes it better or worse?):</label>
+                    <textarea name="modalities" class="form-control" rows="3" placeholder="e.g., Better from warmth, worse at night, worse from motion..."></textarea>
+                </div>
+
+                <!-- ③ Medical History -->
+                <div style="margin-bottom: 30px; background: #fdfdfd; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
+                    <h3 style="color: #006666; margin-top: 0; border-bottom: 2px solid #e0f2f1; padding-bottom: 8px;">3. Medical History</h3>
+                    
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Past Conditions or Surgeries:</label>
+                    <textarea name="past_conditions" class="form-control" rows="2" placeholder="List any major past illnesses or operations..."></textarea>
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Allergies:</label>
+                    <input type="text" name="allergies" class="form-control" placeholder="Food, drug, or environmental allergies">
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Family Medical History:</label>
+                    <textarea name="family_history" class="form-control" rows="2" placeholder="Conditions running in the family (e.g., diabetes, asthma, hypertension)..."></textarea>
+                </div>
+
+                <!-- ④ Current Treatment -->
+                <div style="margin-bottom: 30px; background: #fdfdfd; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
+                    <h3 style="color: #006666; margin-top: 0; border-bottom: 2px solid #e0f2f1; padding-bottom: 8px;">4. Current Treatment</h3>
+                    
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Current Medications / Supplements:</label>
+                    <textarea name="current_medications" class="form-control" rows="2" placeholder="List any prescriptions, over-the-counter drugs, or supplements..."></textarea>
+
+                    <label style="font-weight: bold; display: block; margin-top: 15px; margin-bottom: 5px;">Previous Treatments Tried:</label>
+                    <textarea name="previous_treatments" class="form-control" rows="2" placeholder="What have you tried so far for this condition?"></textarea>
+                </div>
+
+                <!-- ⑤ Tell Me More -->
+                <div style="margin-bottom: 30px; background: #fdfdfd; padding: 20px; border: 1px solid #e0e0e0; border-radius: 6px;">
+                    <h3 style="color: #006666; margin-top: 0; border-bottom: 2px solid #e0f2f1; padding-bottom: 8px;">5. Tell Me More (Constitutional & Lifestyle)</h3>
+                    
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Sleep, Appetite, Thirst, Thermal Preferences & Emotions:</label>
+                    <textarea name="sleep_appetite_emotions" class="form-control" rows="5" placeholder="Describe your sleep patterns, appetite, what foods/drinks you crave or dislike, whether you feel hot or cold easily, and your general emotional state or stress factors..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; font-size: 16px;">Submit Consultation Request</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

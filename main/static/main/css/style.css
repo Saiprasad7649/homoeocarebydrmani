@@ -1,0 +1,110 @@
+/* Global Reset & Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Container Wrappers */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid #006666;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: #006666;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+/* Buttons and Links */
+.btn-primary {
+    background-color: #006666;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #004d4d;
+}
+
+.back-link {
+    color: #006666;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Form Styling */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: #006666;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    color: #e0f2f1;
+    text-decoration: underline;
+}
+/* Active navigation tab highlight style */
+nav a.active-tab {
+    background: #005959 !important;
+    font-weight: bold;
+    border-bottom: 3px solid #ffffff;
+}

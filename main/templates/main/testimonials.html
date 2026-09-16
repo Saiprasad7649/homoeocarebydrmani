@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container" style="max-width: 900px; margin: 40px auto; padding: 0 20px;">
+        <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <h1 class="text-center" style="color: #006666; margin-top: 0;">Patient Success Stories</h1>
+            <p class="text-center text-muted" style="margin-bottom: 30px;">
+                Read how classical homeopathy has helped our patients regain their health and vitality.
+            </p>
+
+            <div style="display: grid; gap: 20px;">
+                {% for item in testimonials %}
+                    <div style="background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 6px; padding: 20px; display: flex; gap: 20px; align-items: center; transition: box-shadow 0.2s;">
+                        
+                        <!-- Flash Card Thumbnail Image -->
+                        {% if item.image %}
+                            <div style="flex-shrink: 0;">
+                                <img src="{{ item.image.url }}" alt="{{ item.patient_name }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #006666;">
+                            </div>
+                        {% endif %}
+
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                                <h3 style="margin: 0; color: #006666;">{{ item.patient_name }}</h3>
+                                {% if item.condition_treated %}
+                                    <span style="font-size: 12px; background: #e0f2f1; color: #004d40; padding: 3px 8px; border-radius: 4px; font-weight: bold;">{{ item.condition_treated }}</span>
+                                {% endif %}
+                            </div>
+                            <p style="color: #444; margin-bottom: 12px; line-height: 1.5; font-style: italic;">"{{ item.summary }}"</p>
+                            <a href="{% url 'testimonial_detail' item.slug %}" style="color: #006666; font-weight: bold; text-decoration: none;">Read Full Story &rarr;</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p style="text-align: center; color: #666;">No testimonials available yet. Check back soon!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+        <div class="card" style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="margin-bottom: 20px;">
+                <a href="{% url 'diseases' %}" style="color: #006666; text-decoration: none; font-weight: bold;">&larr; Back to All Conditions</a>
+            </div>
+            
+            {% if disease.category %}
+                <span style="font-size: 12px; background: #e0f2f1; color: #004d40; padding: 4px 10px; border-radius: 4px; font-weight: bold; display: inline-block; margin-bottom: 10px;">{{ disease.category }}</span>
+            {% endif %}
+            
+            <h1 style="color: #006666; margin-top: 0; margin-bottom: 15px; font-size: 32px;">{{ disease.name }}</h1>
+            
+            <!-- Featured Condition Image -->
+            {% if disease.image %}
+                <div style="margin-bottom: 25px;">
+                    <img src="{{ disease.image.url }}" alt="{{ disease.name }}" style="width: 100%; max-height: 380px; object-fit: cover; border-radius: 6px; border: 1px solid #eaeaea;">
+                </div>
+            {% endif %}
+            
+            <p style="font-size: 18px; color: #555; line-height: 1.6; border-left: 4px solid #006666; padding-left: 15px; margin-bottom: 25px; background: #f9fbfb; padding-top: 10px; padding-bottom: 10px;">
+                {{ disease.summary }}
+            </p>
+
+            <div style="line-height: 1.8; color: #333; font-size: 16px;">
+                {{ disease.detailed_description|safe }}
+            </div>
+
+            <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; text-align: center;">
+                <p style="color: #666; margin-bottom: 15px;">Looking for personalized care for this condition?</p>
+                <a href="{% url 'consultation' %}" class="btn-primary" style="display: inline-block; text-decoration: none; padding: 12px 25px; background: #006666; color: white; border-radius: 6px; font-weight: bold;">Book an Online Consultation</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

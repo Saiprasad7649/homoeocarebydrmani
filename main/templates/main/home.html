@@ -1,0 +1,206 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Homoeocare by Dr. Mani | Classical Homeopathic Clinic{% endblock %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px 20px 60px 20px;">
+
+    <!-- =========================================
+         1. HERO SECTION (70% Left Text / 30% Right Logo Cover)
+    ========================================= -->
+    <div style="display: grid; grid-template-columns: 7fr 3fr; gap: 30px; margin-bottom: 50px; align-items: stretch;">
+        
+        <!-- Left Column (70%): Main Welcome & Actions -->
+        <div style="background: linear-gradient(135deg, #f4f9f9 0%, #e6f2f2 100%); border: 1px solid #cce6e6; border-radius: 12px; padding: 50px 35px; display: flex; flex-direction: column; justify-content: center;">
+            <h1 style="color: #006666; font-size: 38px; margin-top: 0; margin-bottom: 15px; font-weight: 700; line-height: 1.2;">
+                Gentle, Effective, and Individualized Care
+            </h1>
+            <p style="color: #555555; font-size: 17px; margin: 0 0 25px 0; line-height: 1.6;">
+                Specializing in long-term relief for chronic and acute conditions through classical homeopathy, tailored specifically to your unique constitution.
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <a href="{% url 'consultation' %}" style="background: #006666; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 15px; box-shadow: 0 4px 10px rgba(0,102,102,0.2);">
+                    Book Consultation
+                </a>
+                <a href="{% url 'contact' %}" style="color: #006666; text-decoration: none; font-weight: bold; font-size: 15px; padding: 12px 15px;">
+                    Get in Touch &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column (30%): Fully Covered with Website Logo Image -->
+        <div style="background: #ffffff; border: 1px solid #cce6e6; border-radius: 12px; overflow: hidden; position: relative; min-height: 320px; box-shadow: 0 4px 12px rgba(0,102,102,0.05); display: flex;">
+            <img src="{% static 'main/images/website logo.jpeg' %}" alt="Homoeocare by Dr. Mani Logo" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'">
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         2. TRUST & CREDIBILITY PILLARS
+    ========================================= -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px;">
+        
+        <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 30px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="font-size: 32px; color: #006666; margin-bottom: 15px;">🌿</div>
+            <h3 style="color: #006666; margin-top: 0; font-size: 20px;">Classical Approach</h3>
+            <p style="color: #666; font-size: 15px; line-height: 1.5;">Focusing on root-cause healing rather than temporary symptom suppression using natural remedies.</p>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 30px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="font-size: 32px; color: #006666; margin-bottom: 15px;">💻</div>
+            <h3 style="color: #006666; margin-top: 0; font-size: 20px;">Secure Online Care</h3>
+            <p style="color: #666; font-size: 15px; line-height: 1.5;">Convenient, safe virtual consultations and automated dual-email tracking for seamless visits.</p>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 30px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="font-size: 32px; color: #006666; margin-bottom: 15px;">🎯</div>
+            <h3 style="color: #006666; margin-top: 0; font-size: 20px;">Individualized Plans</h3>
+            <p style="color: #666; font-size: 15px; line-height: 1.5;">Customized treatment programs structured uniquely around your physical and emotional history.</p>
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         3. MEET THE PRACTITIONER PREVIEW
+    ========================================= -->
+    <div style="background: #fafafa; border: 1px solid #e5e5e5; border-radius: 10px; padding: 40px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 60px;">
+        <div style="flex: 1; min-width: 260px; text-align: center;">
+            <img src="{% static 'main/images/provider_imagehome.jpeg' %}" alt="Dr. Maniprasad Gone" style="width: 100%; max-width: 260px; height: 300px; border-radius: 12px; border: 3px solid #006666; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        </div>
+        <div style="flex: 2; min-width: 300px;">
+            <span style="color: #006666; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Meet Your Provider</span>
+            <h2 style="color: #333; font-size: 28px; margin: 8px 0 15px 0;">Dr. Maniprasad Gone</h2>
+            <p style="color: #555; line-height: 1.7; font-size: 16px; margin-bottom: 20px;">
+                With extensive clinical expertise in classical homeopathy, Dr. Mani is committed to restoring systemic balance and vibrant health. Every case is treated with deep empathy and careful constitutional analysis.
+            </p>
+            <a href="{% url 'provider' %}" style="display: inline-block; background: transparent; color: #006666; border: 2px solid #006666; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: all 0.2s;">
+                Learn More About Dr. Mani &rarr;
+            </a>
+        </div>
+    </div>
+
+
+    <!-- =========================================
+         4. CONDITIONS WE TREAT (STATIC HARDCODED CATEGORIES)
+    ========================================= -->
+    <div style="margin-bottom: 60px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h2 style="color: #006666; font-size: 26px; margin: 0 0 5px 0;">Conditions We Treat</h2>
+                <p style="color: #666; margin: 0; font-size: 15px;">Explore our core treatment categories or browse our full knowledge base.</p>
+            </div>
+            <a href="{% url 'diseases' %}" style="background: #006666; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 14px;">View All Conditions &rarr;</a>
+        </div>
+
+        <!-- Grid of 6 Fixed Core Category Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+            
+            <!-- 1. Respiratory & Allergic Conditions -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/respiratory.avif' %}" alt="Respiratory & Allergic Conditions" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=Respiratory+Conditions'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">Respiratory & Allergic Conditions</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Allergic Rhinitis</li>
+                        <li>Seasonal Allergies</li>
+                        <li>Sinus Complaints</li>
+                        <li>Recurrent Cough</li>
+                        <li>Asthma-related symptoms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. Skin & Hair Concerns -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/hairskin.webp' %}" alt="Skin & Hair Concerns" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=Skin+and+Hair'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">Skin & Hair Concerns</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Eczema</li>
+                        <li>Dermatitis</li>
+                        <li>Psoriasis</li>
+                        <li>Acne</li>
+                        <li>Common Skin Complaints</li>
+                        <li>Hair & Scalp Concerns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. Digestive Health -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/digestive.jpg' %}" alt="Digestive Health" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=Digestive+Health'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">Digestive Health</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Acidity & Indigestion</li>
+                        <li>Bloating</li>
+                        <li>Constipation</li>
+                        <li>Irritable Bowel Symptoms</li>
+                        <li>Other Digestive Complaints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. Headache & Pain -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/headache.webp' %}" alt="Headache & Pain" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=Headache+and+Pain'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">Headache & Pain</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Migraine</li>
+                        <li>Recurrent Headaches</li>
+                        <li>Joint Pain</li>
+                        <li>Arthritis-related Symptoms</li>
+                        <li>Musculoskeletal Complaints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5. Women's Health -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/womens.webp' %}" alt="Women's Health" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=Womens+Health'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">Women's Health</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Menstrual Complaints</li>
+                        <li>Premenstrual Symptoms</li>
+                        <li>PCOS-related Concerns</li>
+                        <li>Menopausal Symptoms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 6. General & Lifestyle-Related Concerns -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                <img src="{% static 'main/images/sleepless.webp' %}" alt="General & Lifestyle-Related Concerns" style="width: 100%; height: 160px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x160?text=General+Lifestyle'">
+                <div style="padding: 20px; flex: 1; display: flex; flex-direction: column;">
+                    <h3 style="color: #006666; font-size: 18px; margin-top: 0; margin-bottom: 12px; border-bottom: 2px solid #006666; padding-bottom: 6px;">General & Lifestyle</h3>
+                    <ul style="color: #444; font-size: 14px; line-height: 1.7; padding-left: 18px; margin: 0;">
+                        <li>Sleep-related Complaints</li>
+                        <li>Stress & Anxiety-related Symptoms</li>
+                        <li>Recurrent Minor Ailments</li>
+                        <li>General Well-being Concerns</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================
+         5. FINAL CLOSING CTA BANNER
+    ========================================= -->
+    <div style="background: #006666; color: white; border-radius: 10px; padding: 45px 30px; text-align: center;">
+        <h2 style="font-size: 30px; margin-top: 0; margin-bottom: 12px;">Ready to Begin Your Healing Journey?</h2>
+        <p style="font-size: 17px; max-width: 650px; margin: 0 auto 25px auto; opacity: 0.9;">Take the first step toward safe, natural, and lasting health today with a structured clinical consultation.</p>
+        <a href="{% url 'consultation' %}" style="background: white; color: #006666; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            Schedule Your Consultation Now
+        </a>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container" style="max-width: 900px;">
+        <div class="card">
+            <h1 class="text-center" style="color: #006666; margin-top: 0;">Conditions Treated</h1>
+            <p class="text-center text-muted" style="margin-bottom: 25px;">
+                Explore common acute and chronic conditions treated effectively through classical homeopathy. Use the search bar below to find specific health concerns.
+            </p>
+
+            <!-- Search Form - Fully encapsulated flex row -->
+            <form method="GET" action="{% url 'diseases' %}" style="display: flex; gap: 10px; margin-bottom: 30px; width: 100%;">
+                <input type="text" name="q" value="{{ query }}" placeholder="Search by condition name or category (e.g., Asthma, Skin, Arthritis)..." style="flex: 1; padding: 10px 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+                <button type="submit" style="background: #006666; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; white-space: nowrap;">Search</button>
+            </form>
+
+            {% if query %}
+                <p style="margin-bottom: 20px; font-style: italic; color: #555;">
+                    Showing results for "<strong>{{ query }}</strong>" ({{ diseases|length }} found) 
+                    <a href="{% url 'diseases' %}" style="color: #006666; margin-left: 10px;">Clear Search</a>
+                </p>
+            {% endif %}
+
+            <!-- Disease List Grid/Cards -->
+            {% if diseases %}
+                <div style="display: grid; gap: 20px;">
+                    {% for disease in diseases %}
+                        <div style="background: #fdfdfd; border: 1px solid #e0e0e0; border-radius: 6px; padding: 20px; display: flex; gap: 20px; align-items: center; transition: box-shadow 0.2s;">
+                            
+                            <!-- Optional Thumbnail Image -->
+                            {% if disease.image %}
+                                <div style="flex-shrink: 0;">
+                                    <img src="{{ disease.image.url }}" alt="{{ disease.name }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd;">
+                                </div>
+                            {% endif %}
+
+                            <div style="flex: 1;">
+                                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+                                    <h3 style="margin: 0; color: #006666;">
+                                        <a href="{% url 'disease_detail' disease.slug %}" style="text-decoration: none; color: #006666;">{{ disease.name }}</a>
+                                    </h3>
+                                    {% if disease.category %}
+                                        <span style="font-size: 12px; background: #e0f2f1; color: #004d40; padding: 3px 8px; border-radius: 4px; font-weight: bold;">{{ disease.category }}</span>
+                                    {% endif %}
+                                </div>
+                                <p style="color: #444; margin-bottom: 12px; line-height: 1.5;">{{ disease.summary }}</p>
+                                <a href="{% url 'disease_detail' disease.slug %}" style="color: #006666; font-weight: bold; text-decoration: none;">Read Detailed Guide &rarr;</a>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <p>No conditions found matching your search. Please try another term or reach out directly via consultation.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

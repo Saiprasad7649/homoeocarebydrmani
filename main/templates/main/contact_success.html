@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="card text-center" style="max-width: 500px; margin: 0 auto; padding: 40px;">
+            <h1 style="color: #006666; margin-top: 0;">Thank You!</h1>
+            <p style="color: #444; line-height: 1.6; margin-bottom: 25px;">
+                Your message has been successfully sent to Homoeocare by Dr. Mani. We will get back to you shortly.
+            </p>
+            <a href="{% url 'home' %}" class="btn-primary" style="display: inline-block; width: auto; padding: 10px 25px;">Return Home</a>
+        </div>
+    </div>
+{% endblock %}

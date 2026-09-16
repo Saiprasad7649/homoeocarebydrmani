@@ -1,0 +1,14 @@
+from django import forms
+from .models import ContactSubmission
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactSubmission
+        fields = ['name', 'email', 'phone', 'subject', 'message']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full Name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Subject / Condition'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe your symptoms or inquiry...', 'rows': 4}),
+        }

@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <h1 class="text-center" style="margin-top: 0;">Contact Us & Book Inquiries</h1>
+            <p class="text-center text-muted" style="margin-bottom: 25px;">Fill out the form below to get in touch with Dr. Mani's clinic.</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                
+                <label for="name" style="font-weight: bold; display: block; margin-bottom: 5px;">Name:</label>
+                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+
+                <label for="email" style="font-weight: bold; display: block; margin-bottom: 5px;">Email:</label>
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+
+                <label for="phone" style="font-weight: bold; display: block; margin-bottom: 5px;">Phone:</label>
+                <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+
+                <label for="subject" style="font-weight: bold; display: block; margin-bottom: 5px;">Subject:</label>
+                <input type="text" name="subject" class="form-control" placeholder="Subject / Condition">
+
+                <label for="message" style="font-weight: bold; display: block; margin-bottom: 5px;">Message:</label>
+                <textarea name="message" class="form-control" rows="5" placeholder="Describe your symptoms or inquiry..." required></textarea>
+
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

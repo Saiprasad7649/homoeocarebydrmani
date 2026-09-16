@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homoeocare By Dr. Mani</title>
+    <!-- Link our external professional stylesheet -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+
+    <!-- Navigation Bar -->
+    <nav style="background: #003333; padding: 12px 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        
+        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Home</a>
+        
+        <a href="{% url 'consultation' %}" class="{% if request.resolver_match.url_name == 'consultation' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Online Consultation</a>
+        
+        <a href="{% url 'provider' %}" class="{% if request.resolver_match.url_name == 'provider' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Provider Information</a>
+        
+        <a href="{% url 'diseases' %}" class="{% if request.resolver_match.url_name == 'diseases' or request.resolver_match.url_name == 'disease_detail' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Conditions</a>
+        
+        <a href="{% url 'testimonials' %}" class="{% if request.resolver_match.url_name == 'testimonials' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Testimonials</a>
+        
+        <a href="{% url 'blogs' %}" class="{% if request.resolver_match.url_name == 'blogs' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Blogs</a>
+        
+        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Contact Us</a>
+        
+    </nav>
+
+    <!-- Page Content Area -->
+    <div class="content" style="flex: 1;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- =========================================
+         GLOBAL WEBSITE FOOTER
+    ========================================= -->
+    <footer style="background: #003333; color: #ffffff; padding: 40px 20px 20px 20px; border-top: 4px solid #006666; margin-top: auto;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-bottom: 30px;">
+            
+            <!-- Column 1: Clinic Overview with Logo -->
+            <div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                    <img src="{% static 'main/images/website logo.jpeg' %}" alt="Homoeocare Logo" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #006666;" onerror="this.style.display='none'">
+                    <h3 style="color: #ffffff; font-size: 18px; margin: 0; padding-bottom: 2px;">Homoeocare by Dr. Mani</h3>
+                </div>
+                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin-bottom: 10px;">
+                    Empathatic care for Restoring Vitality.
+                </p>
+                <p style="color: #b0c4c4; font-size: 13px; margin: 0;">
+                    &copy; 2026 Homoeocare by Dr. Mani. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Column 2: Contact & Location Info -->
+            <div>
+                <h3 style="color: #ffffff; font-size: 18px; margin-top: 0; margin-bottom: 12px;">Contact Information</h3>
+                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0 0 8px 0;">
+                    📍 <strong style="color: #fff;">Address:</strong> 3-74/1, Nizamabad, Telangana, 503246
+                </p>
+                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0 0 8px 0;">
+                    📧 <strong style="color: #fff;">Email:</strong> maniprasadnih@gmail.com
+                </p>
+                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0;">
+                    📞 <strong style="color: #fff;">Phone/WhatsApp:</strong> +91-9502487797
+                </p>
+            </div>
+
+            <!-- Column 3: Social Links & Medical Disclaimer Note -->
+            <div>
+                <h3 style="color: #ffffff; font-size: 18px; margin-top: 0; margin-bottom: 12px;">Connect & Notice</h3>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;">
+                    <a href="https://wa.me/919502487797" target="_blank" style="background: #25D366; color: white; padding: 6px 10px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold;">WhatsApp</a>
+                    <a href="https://www.instagram.com/homoeo_universe" target="_blank" style="background: #E1306C; color: white; padding: 6px 10px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold;">Instagram</a>
+                </div>
+                <p style="color: #b0c4c4; font-size: 12px; line-height: 1.5; margin: 0;">
+                    *Content is for educational use only and does not substitute for formal medical evaluation. <a href="{% url 'disclaimer' %}" style="color: #80cbc4; text-decoration: underline;">Read Disclaimer</a>.
+                </p>
+            </div>
+
+        </div>
+        
+        <div style="text-align: center; border-top: 1px solid #004d4d; padding-top: 15px; font-size: 12px; color: #8fa8a8;">
+            Committed to natural constitutional healing and patient wellness.
+        </div>
+    </footer>
+
+</body>
+</html>
