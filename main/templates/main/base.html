@@ -9,31 +9,77 @@
     <!-- Link our external professional stylesheet -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <style>
-        /* Navbar Layout Defaults (Desktop) */
+        /* Navbar Styling */
         .navbar-container {
-            background: #003333;
-            padding: 12px 20px;
+            background-color: #003333;
+            padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: relative;
+            white-space: nowrap;
+        }
+
+        /* Framed Box Styling for Logo & Title */
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+            background: rgba(0, 102, 102, 0.25); /* Subtle contrasting shade inside the box */
+            border: 1px solid #005959; /* Elegant subtle border */
+            padding: 6px 12px;
+            border-radius: 6px; /* Smooth rounded corners */
+            transition: background 0.2s;
+        }
+
+        .nav-brand:hover {
+            background: rgba(0, 102, 102, 0.4); /* Slightly lighter on hover */
+        }
+
+        .nav-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #007f7f;
+        }
+
+        .nav-brand span {
+            font-size: 16.5px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 0.3px;
         }
 
         .nav-links {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: nowrap;
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: 4px;
-            font-size: 15px;
+            font-size: 14.5px;
             transition: background 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e0f2f1;
+            text-decoration: underline;
+        }
+
+        /* Active Tab Highlight Style */
+        .nav-links a.active-tab {
+            background: #005959 !important;
+            font-weight: bold;
+            border-bottom: 3px solid #ffffff;
         }
 
         /* Hamburger Toggle Button (Hidden on Desktop) */
@@ -57,12 +103,7 @@
         }
 
         /* Responsive Mobile Styles */
-        @media (max-width: 768px) {
-            .navbar-container {
-                justify-content: space-between;
-                padding: 15px 20px;
-            }
-
+        @media (max-width: 900px) {
             .menu-toggle {
                 display: flex; /* Show hamburger on mobile */
             }
@@ -80,6 +121,7 @@
                 gap: 5px;
                 text-align: center;
                 z-index: 1000;
+                white-space: normal;
             }
 
             .nav-links.active {
@@ -96,12 +138,15 @@
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
-    <!-- Navigation Bar with Hamburger Toggle -->
+    <!-- Navigation Bar -->
     <nav class="navbar-container">
-        <!-- Optional Mobile Brand Title / You can remove or keep this -->
-        <span style="color: white; font-weight: bold; font-size: 16px; display: none;" class="mobile-brand">Homoeocare</span>
+        <!-- Framed Brand Logo & Title on the Left -->
+        <a href="{% url 'home' %}" class="nav-brand">
+            <img src="{% static 'main/images/website logo.jpeg' %}" alt="Logo" onerror="this.style.display='none'">
+            <span>Homoeocare by Dr. Mani</span>
+        </a>
 
-        <!-- Hamburger Button -->
+        <!-- Hamburger Button on the Right -->
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -116,7 +161,6 @@
             <a href="{% url 'diseases' %}" class="{% if request.resolver_match.url_name == 'diseases' or request.resolver_match.url_name == 'disease_detail' %}active-tab{% endif %}">Conditions</a>
             <a href="{% url 'testimonials' %}" class="{% if request.resolver_match.url_name == 'testimonials' %}active-tab{% endif %}">Testimonials</a>
             <a href="{% url 'blogs' %}" class="{% if request.resolver_match.url_name == 'blogs' %}active-tab{% endif %}">Blogs</a>
-            <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active-tab{% endif %}">Contact Us</a>
         </div>
     </nav>
 
@@ -146,7 +190,7 @@
                 </p>
             </div>
 
-            <!-- Column 2: Contact & Location Info -->
+            <!-- Column 2: Contact Information & Quick Link -->
             <div>
                 <h3 style="color: #ffffff; font-size: 18px; margin-top: 0; margin-bottom: 12px;">Contact Information</h3>
                 <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0 0 8px 0;">
@@ -155,9 +199,10 @@
                 <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0 0 8px 0;">
                     📧 <strong style="color: #fff;">Email:</strong> maniprasadnih@gmail.com
                 </p>
-                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0;">
+                <p style="color: #b0c4c4; font-size: 14px; line-height: 1.6; margin: 0 0 12px 0;">
                     📞 <strong style="color: #fff;">Phone/WhatsApp:</strong> +91-9502487797
                 </p>
+                <a href="{% url 'contact' %}" style="color: #80cbc4; text-decoration: underline; font-size: 14px; font-weight: bold;">💬 Visit our dedicated Contact & Inquiry Page &rarr;</a>
             </div>
 
             <!-- Column 3: Social Links & Medical Disclaimer Note -->
