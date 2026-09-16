@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-$6e48qr-8me38%9esqp3f**hs*yo)#tdl+#ku&i_4q1&xcay-z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Updated with PythonAnywhere host and placeholders for your custom domain
+ALLOWED_HOSTS = ['Saiprasad7649.pythonanywhere.com', 'localhost', '127.0.0.1', 'yourcustomdomain.com', 'www.yourcustomdomain.com']
 
 
 # Application definition
@@ -117,8 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# --- ADDED FOR IMAGE UPLOADS ---
+# --- MEDIA FILE CONFIGURATION ---
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # ------------------------------
