@@ -8,11 +8,27 @@
     <title>Homoeocare By Dr. Mani</title>
     <!-- Link our external professional stylesheet -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <style>
+        /* Mobile Navbar Responsive Tweaks */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column !important;
+                padding: 10px 15px !important;
+                gap: 6px !important;
+            }
+            nav a {
+                display: block !important;
+                width: 90% !important;
+                margin: 2px auto !important;
+                text-align: center !important;
+            }
+        }
+    </style>
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
 
     <!-- Navigation Bar -->
-    <nav style="background: #003333; padding: 12px 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <nav style="background: #003333; padding: 12px 20px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         
         <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active-tab{% endif %}" style="color: white; text-decoration: none; padding: 8px 14px; border-radius: 4px; font-size: 15px; transition: background 0.2s;">Home</a>
         
