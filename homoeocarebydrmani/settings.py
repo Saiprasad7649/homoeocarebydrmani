@@ -27,7 +27,13 @@ SECRET_KEY = 'django-insecure-$6e48qr-8me38%9esqp3f**hs*yo)#tdl+#ku&i_4q1&xcay-z
 DEBUG = True
 
 # Updated with PythonAnywhere host and placeholders for your custom domain
-ALLOWED_HOSTS = ['homoeocarebydrmani.pythonanywhere.com', 'localhost', '127.0.0.1', 'yourcustomdomain.com', 'www.yourcustomdomain.com']
+ALLOWED_HOSTS = [
+    'homoeocarebydrmani.pythonanywhere.com',
+    'homoeocarebydrmani.com',
+    'www.homoeocarebydrmani.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
