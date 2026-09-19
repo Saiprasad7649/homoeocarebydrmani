@@ -3,10 +3,25 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps import GenericSitemap
+from django.contrib.sitemaps import Sitemap
+from django.shortcuts import reverse
 
-# Basic sitemap setup
-sitemaps = {}
+# Static sitemap class for non-database pages
+class StaticViewSitemap(Sitemap):
+    priority = 0.8
+    changefreq = 'weekly'
+
+    def items(self):
+        # Update this list with the exact 'name' attributes defined in main/urls.py
+        # Common examples: ['home', 'about', 'contact', 'services']
+        return ['home']
+
+    def location(self, item):
+        return reverse(item)
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
